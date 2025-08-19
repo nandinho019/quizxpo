@@ -48,3 +48,13 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## Foto do Quiz
+![Tela](./assets/images/tela1.png)
+
+
+![pg1](./assets/images/resposta%20correta.png)
+
+![pg2](./assets/images/resposta%20errada.png)
+
+![fim](./assets/images/reiniciar.png)

@@ -1,29 +1,61 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
+import { StyleSheet, View, Text } from "react-native";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+const styles = StyleSheet.create({
+  faixa: {
+    backgroundColor: "rgba(167, 194, 252, 1)",
+  },
+  texto: {
+    color: "#000",
+    fontWeight: "bold",
+    fontSize: 22,
+    textAlign: "center",
+    padding: 12,
+  },
+  rodape: {
+    height: 50,
+    backgroundColor: "rgba(167, 194, 252, 1)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textoRodape: {
+    color: "rgba(51, 116, 136, 1)",
+    fontWeight: "bold",
+  },
+  header: {
+    backgroundColor: "rgba(167, 194, 252, 1)",
+    paddingTop: 40,
+    paddingBottom: 12,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  headerText: {
+    color: "rgba(51, 116, 136, 1)",
+    fontWeight: "bold",
+    fontSize: 24,
+  },
+});
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
-
+export default function Layout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+    <View style={{ flex: 1 }}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Quiz Matemática</Text>
+      </View>
+      <Stack
+        screenOptions={{
+          headerStyle: styles.faixa,
+          headerTitleStyle: styles.texto,
+        }}
+      >
+        <Stack.Screen name="index" options={{ title: "Lista de Posts", headerShown: false }} />
+        <Stack.Screen name="detalhes" options={{ title: "Detalhes do Post", headerShown: false }} />
+        <Stack.Screen name="outra" options={{ title: "Outra Página", headerShown: false }} />
+        <Stack.Screen name="mais uma" options={{ title: "Mais uma", headerShown: false }} />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+      <View style={styles.rodape}>
+        <Text style={styles.textoRodape}>Quiz Matemática © 2025</Text>
+      </View>
+    </View>
   );
 }
